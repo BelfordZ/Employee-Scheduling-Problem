@@ -37,12 +37,32 @@ function employee(ident, name, fte) {
 	this.daysConseq = 0;
 	this.weight = 100;
 	this.shifts = new Array();
-	this.update = function(shiftId) { 
+	this.getDayFromShift = function(shift_id) {
+		return shift_id.substr(0, shift_id.lastIndexOf(","));
+	}
+	this.addShift = function(shiftId) {
+		if (this.getDayFromShift(shiftId) != this.dayOfLastShift)
+		{
+			this.daysConseq++;
+			this.shifts.push(shiftId);
+			
+			if (this.daysConseq > 6)
+				this.weight = -100;
+			if (this.daysConseq > 3)
+				this.weight = 75;
+		}
+	}
+	this.update = function(dayId) { 
 	// this is where most of the constraints will actually go
-				
-		var lastShiftAdded = this.shifts[this.shifts.length - 1];
-		//var dayOfLastShift = lastShiftAdded.substr(0, lastShiftAdded.lastIndexOf(",")-1);
-		//console.log(dayOfLastShift);
+		if (this.shifts[0])
+		{
+			//var lastShiftAdded = this.shifts[this.shifts.length - 1];
+			this.dayOfLastShift = this.getDayFromShift(this.shifts[this.shifts.length -1]);//lastShiftAdded.substr(0, lastShiftAdded.lastIndexOf(","));
+			if (this.dayOfLastShift == dayId)
+				this.weight == -100
+			else
+				this.weight == 0;
+		}
 
 		for(var i=0; i<this.shifts.length; i++)
 		{
@@ -53,13 +73,13 @@ function employee(ident, name, fte) {
 			
 		}
 		if (this.daysConseq > 3)
-			this.weight -= 100;
+			this.weight = 75;
 	}
 };
 Employees = new Array();
 function initEmployees()
 {
-	this.CURR_EMPLOYEE_INDEX = 0;
+	CURR_EMPLOYEE_INDEX = 0;
 	
 	for (var i = 0; i<2; i++) {
 		Employees.push(new employee(
@@ -79,12 +99,11 @@ function shift(shift_id) {
 	
 	// assign an employee
 	this.employeeWorkingId = null;
-	// update employee weights
-	for (var i = 0; i<CURR_EMPLOYEE_INDEX; i++)
-		Employees[i].update(this.id);
 	// Sort them based on their weights
-	Employees.sort(function(a,b) { return a.weight > b.weight});
-	Employees[0].shifts.push(this.id);
+	Employees.sort(function(a,b) { return a.weight < b.weight });
+	//Employees[0].shifts.push(this.id);
+	Employees[0].addShift(this.id);
+	//this.children = Employees;
 };
 
 function day(day_id) {
@@ -92,7 +111,11 @@ function day(day_id) {
 	this.shifts = new Array();
 	for (var i = 0; i<NUM_OF_SHIFTS_PER_DAY; i++)
 		this.shifts[i] = new shift(day_id + ", " + i.toString());
+	// update employee weights
+	for (var i = 0; i<CURR_EMPLOYEE_INDEX; i++)
+		Employees[i].update(this.id);
 	this.children = this.shifts;
+
 };
 
 function week(week_id) {
@@ -115,7 +138,6 @@ function month(month_id) {
 function Schedule()
 {
 	this.test = new month("dec");
-	//d3.select("#test").html(JSON.stringify(test));
 }
 
 initEmployees();
