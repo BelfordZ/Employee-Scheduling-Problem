@@ -1,0 +1,24 @@
+A note about FTE: 
+       since FTE=1.0 -> 16 shifts/month
+       so RealFTE = 1.0 / 16 = 0.0625
+       we note that each shift scheduled adds 0.0625 to their current_FTE_value
+       we thus have a general formula of:
+       	  RealFTE = FTE / numShiftsToMakeFTEequal1.0
+       giving us the amount 1 shift adds to current_FTE_value
+
+hc1: all shifts must be covered by an employee
+hc2: doctors on rounding teams must work at least 3 consecutive days
+hc3: days off following 7 consec shifts must be at least 2 days
+hc4: can not schedule day shift after a night shift
+hc5: no employee with fte = 1.0 with current_FTE_value > 1.0 may be scheduled
+     unless for all employee current_FTE_value, theirs dont differ from ours
+     by more than 0.0625
+
+
+sc1: physicians scheduled 7 consec days should not be scheduled
+sc2: physicians should have had worked a Rounding team shift before being 
+     scheduled for Admitting
+sc3: FTE == 1.0 should have equal number of days off
+sc4: a particular rounding team physician should work 'multiple' consec shifts
+     on that team
+sc5: to 

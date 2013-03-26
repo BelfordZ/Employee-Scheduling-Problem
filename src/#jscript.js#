@@ -6,7 +6,7 @@ week: { days[] }
 month: { weeks[] }
 shift: { {day}, shift#, shiftID, employeeID}
 */
-
+/*
 NUM_OF_SHIFTS_PER_DAY = 5;
 CURR_EMPLOYEE_INDEX = 0;
 // Okay, so this code is a mess. Thats alright though, it just needs a refactoring.
@@ -144,7 +144,7 @@ function Schedule()
 initEmployees();
 sched = new Schedule();
 console.log(JSON.stringify(Employees));
-/*
+*/
 
 function shift(shift_id) {
    this.id = shift_id;
@@ -187,7 +187,7 @@ function BFS(tree, root) {
      
    tree[root].visited = true; // we mark root visited
    q.push(root); // push onto bfs queue
-   while (!_.isEmpty(q)) {
+   while (!_.isEmpty(q)) {w
       var currShift = q.shift(); // same as front/pop...
       
       for (var i=0; i<tree[currShift].deg; i++) {
@@ -216,5 +216,4 @@ function main() {
    }
    
    
-			 }
-      */
+}

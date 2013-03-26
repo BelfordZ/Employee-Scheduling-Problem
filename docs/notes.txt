@@ -1,1 +1,6 @@
+okay so checkit. BFS, each element added to queue has current weights, 
+and a set of employees. each bfs tree node is a shift scheduled to an 
+employee. before adding something to the queue, we first remove the 
+employees which cannot be scheduled, and assign weights to the others.
+
 http://www.logilab.org/3441
