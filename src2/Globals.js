@@ -12,10 +12,10 @@ function ZB() {
    /*             Public Variables              */
    /*-------------------------------------------*/
    // how many days we are gonna schedule on this run of the algo
-   this.DAYS_TO_SCHEDULE = 30;
+   this.NUM_DAYS_TO_SCHEDULE = 30;
    
    // number of shifts in a given day
-   this.SHIFTS_PER_DAY = 5;
+   this.NUM_SHIFTS_PER_DAY = 5;
 
    // number of shifts somone with 1.0 fte is expected to work in a month
    this.FTE_MONTHLY_SHIFTS = 16;
@@ -36,9 +36,6 @@ function ZB() {
    
 }
 
-/*-------------------------------------------*/
-/*              Private Functions            */
-/*-------------------------------------------*/
 
 //input:
 //returns: float fte_req
@@ -46,7 +43,3 @@ function ZB() {
 ZB.prototype.NUM_FTES_REQUIRED = function(){return (((this.NUM_SHIFTS_PER_ADMITTING_TEAM*this.NUM_ADMITTING_TEAMS)+(this.NUM_SHIFTS_PER_ROUNDING_TEAM*this.NUM_ROUNDING_TEAMS))*365/12/16).toFixed(2);};
 
 global = new ZB();
-
-/*-------------------------------------------*/
-/*               Public Functions            */
-/*-------------------------------------------*/
