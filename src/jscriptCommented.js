@@ -1,6 +1,34 @@
+/*
+employee: {id, name, fte, daysConseq, shifts[] = shiftID}
+employees[employeeID]: {employee}}
+day: {weekdayOrWeekend, holiday}
+week: { days[] }
+month: { weeks[] }
+shift: { {day}, shift#, shiftID, employeeID}
+*/
 
 NUM_OF_SHIFTS_PER_DAY = 5;
 CURR_EMPLOYEE_INDEX = 0;
+// Okay, so this code is a mess. Thats alright though, it just needs a refactoring.
+// I suggest we do a refactor after we have completed the first few constraints being modeled.
+
+// This file has the script which basically abstracts our schedule into a composition of 
+// the sets {month, week, day, shift}. Further, we have an employee object, who has many
+// properties. Most of its properties concern maintaining some state information for the 
+// constraints, which are in the update function. The update function is invoked each
+// time we are scheduling a new day. The Shifts array holds the shift id's of all shifts
+// assigned. a shiftid is a composition of monthid+','+weekid+','+dayid+','+shiftid.
+
+
+// Feel free to email/facebook/google me with any questions
+// Zach Belford
+
+
+//employees[employees.size()] = employee;
+employeeList = [
+	{"name": "Zach Belford", "fte": 1.2},
+	{"name": "Joe Dirt", "fte": 1.0}
+];
 
 function employee(ident, name, fte) {
 	this.id = ident;

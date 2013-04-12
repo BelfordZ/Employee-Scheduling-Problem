@@ -2,13 +2,31 @@
 <html>
   
   <head>
+    <meta charset="utf-8">
+    <title>Hospitalists Scheduler</title>
+    <link rel="stylesheet" href="../qunit/qunit/qunit.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
   </head>
   
-  <body>
+  <body>    
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+
+    <!-- Globals-functions, constants, etc-->
     <script type="text/javascript" src="Globals.js"></script>
+
+    <!-- Class Defs -->
+    <script type="text/javascript" src="EmployeeData.js"></script>
     <script type="text/javascript" src="Employee.js"></script>
+    <script type="text/javascript" src="EmployeeList.js"></script>     
+    <script type="text/javascript" src="Shift.js"></script>
     <script type="text/javascript" src="Schedule.js"></script>
-    <script type="text/javascript" src="script.js"></script>
+
+    <!-- testing stuff -->
+    <script src="../qunit/qunit/qunit.js"></script>
+    <script src="tests.js"></script> 
+    
+    <!-- Main program -->
     <script type="text/javascript" src="Main.js"></script>
   </body>
   

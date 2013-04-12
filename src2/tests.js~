@@ -1,0 +1,13 @@
+function unitTests() {
+   //Assert that EmployeeList's constructor constructs right elements.
+   test("EmployeeList()", function() {
+	 var testEmployeeList = new EmployeeList();
+	 ok(testEmployeeList.eList != undefined, "--> Passed");
+      });
+
+   //Assert makeEmployeeList() returns true
+   test("EmployeeList.makeEmployeeList()", function() {
+	 var testEmployeeList = new EmployeeList();
+	 ok(testEmployeeList.makeEmployeeList(), "--> Passed");
+      });
+}

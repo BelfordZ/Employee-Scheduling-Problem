@@ -40,6 +40,20 @@ function ZB() {
 //input:
 //returns: float fte_req
 //         Calculated number of employee FTE we need to fill schedule
-ZB.prototype.NUM_FTES_REQUIRED = function(){return (((this.NUM_SHIFTS_PER_ADMITTING_TEAM*this.NUM_ADMITTING_TEAMS)+(this.NUM_SHIFTS_PER_ROUNDING_TEAM*this.NUM_ROUNDING_TEAMS))*365/12/16).toFixed(2);};
-
+ZB.prototype.NUM_FTES_REQUIRED = function(){
+   return ((
+	      (this.NUM_SHIFTS_PER_ADMITTING_TEAM*this.NUM_ADMITTING_TEAMS)+
+	      (this.NUM_SHIFTS_PER_ROUNDING_TEAM*this.NUM_ROUNDING_TEAMS))*
+	   365/12/16)
+   .toFixed(2);
+};
+ZB.prototype.NUM_SHIFTS_TO_SCHEDULE = function() {
+   return(this.NUM_DAYS_TO_SCHEDULE * this.NUM_SHIFTS_PER_DAY);
+};
+ZB.prototype.NUM_ADMITTING_SHIFTS = function() {
+   return(this.NUM_ADMITTING_TEAMS * this.NUM_SHIFTS_PER_ADMITTING_TEAM);
+};
+ZB.prototype.NUM_ROUNDING_SHIFTS = function() {
+   return(this.NUM_ROUNDING_TEAMS * this.NUM_SHIFTS_PER_ROUNDING_TEAM);
+};
 global = new ZB();

@@ -1,0 +1,12 @@
+var EmployeeData = {
+    "Employees": [
+        {
+            "name": "Zach Belford",
+            "fte": 1.2
+        },
+        {
+            "name": "Joe Dirt",
+            "fte": 1
+        }
+    ]
+}
