@@ -1,0 +1,4 @@
+#!/bin/bash
+chmod -R 777 ../*
+rm -f *~
+rm -f \#*
